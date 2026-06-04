@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boy Seventri Lumban Gaol - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #06b6d4;
+            --secondary-color: #3b82f6;
+            --dark-bg: #0f172a;
+            --darker-bg: #020617;
+            --card-bg: rgba(15, 23, 42, 0.3);
+            --border-color: rgba(71, 85, 105, 0.5);
+            --text-primary: #ffffff;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        nav.scrolled {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #06b6d4, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .resume-btn {
+            padding: 0.5rem 1rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .resume-btn:hover {
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 80px;
+            left: 25%;
+            width: 300px;
+            height: 300px;
+            background: rgba(6, 182, 212, 0.3);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 160px;
+            right: 25%;
+            width: 400px;
+            height: 400px;
+            background: rgba(59, 130, 246, 0.3);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #06b6d4, #60a5fa, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 2rem auto;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(6, 182, 212, 0.1);
+        }
+
+        .bounce {
+            animation: bounce 2s infinite;
+            margin-top: 2rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .profile-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1;
+            border-radius: 1.5rem;
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 20px 60px rgba(6, 182, 212, 0.3);
+            object-fit: cover;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .profile-image:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(6, 182, 212, 0.5);
+            border-color: var(--secondary-color);
+        }
+
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1.5rem;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(59, 130, 246, 0.1));
+            pointer-events: none;
+        }
+
+        .about-text p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .experience-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .experience-item {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background: rgba(71, 85, 105, 0.15);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .experience-item:hover {
+            background: rgba(71, 85, 105, 0.3);
+            border-color: var(--primary-color);
+        }
+
+        .experience-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-role {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.875rem;
+        }
+
+        .experience-org {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .experience-period {
+            color: #64748b;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-card {
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            background: rgba(6, 182, 212, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:nth-child(2) {
+            border-color: rgba(59, 130, 246, 0.3);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .stat-card:nth-child(3) {
+            border-color: rgba(168, 85, 247, 0.3);
+            background: rgba(168, 85, 247, 0.1);
+        }
+
+        .stat-card:nth-child(4) {
+            border-color: rgba(34, 197, 94, 0.3);
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .stat-number {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            padding: 2rem;
+            border-radius: 0.75rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary-color);
+            background: rgba(6, 182, 212, 0.05);
+        }
+
+        .skill-category {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            background: rgba(71, 85, 105, 0.3);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--primary-color);
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--primary-color);
+        }
+
+        /* Projects Section */
+        .projects-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            padding: 2rem;
+            border-radius: 0.75rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary-color);
+            background: rgba(6, 182, 212, 0.05);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .project-card:hover .project-title {
+            color: var(--primary-color);
+        }
+
+        .project-award {
+            color: var(--primary-color);
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .project-date {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            white-space: nowrap;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .project-tag {
+            padding: 0.375rem 1rem;
+            border-radius: 9999px;
+            background: rgba(6, 182, 212, 0.2);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            color: var(--primary-color);
+            font-size: 0.75rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-description {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-btn {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .contact-btn-email {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .contact-btn-email:hover {
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .contact-btn-phone {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .contact-btn-phone:hover {
+            background: rgba(6, 182, 212, 0.1);
+        }
+
+        .divider {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .social-label {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .social-link {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.5rem;
+            background: rgba(71, 85, 105, 0.3);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+        }
+
+        .social-link:hover {
+            border-color: var(--primary-color);
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-image {
+                max-width: 300px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+            }
+
+            .contact-btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 0.5rem;
+                font-size: 0.75rem;
+            }
+
+            .resume-btn {
+                padding: 0.375rem 0.75rem;
+                font-size: 0.75rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">BOYL</div>
+            <ul class="nav-links">
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button class="resume-btn">Resume</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                <span>Boy Seventri</span><br>
+                Lumban Gaol
+            </h1>
+            <p>Informatics Engineer | Full-Stack Developer | Innovation Enthusiast</p>
+            <p class="hero-description">
+                Lulusan S1 Teknik Informatika dari Universitas Katolik Santo Thomas. Passionate tentang membangun solusi teknologi yang berdampak dan inovatif.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Explore Work</button>
+                <button class="btn btn-secondary">Contact Me</button>
+            </div>
+            <div class="bounce">↓</div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <h2 class="section-title">Tentang Saya</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <p>Saya adalah mahasiswa Teknik Informatika yang bersemangat dalam mengembangkan aplikasi web dan mobile. Dengan pengalaman sebagai Asisten Laboratorium dan Asisten Dosen, saya telah mengembangkan kemampuan problem-solving dan teamwork yang kuat.</p>
+                <p>Terpilih sebagai peserta MSIB dan pemenang berbagai penghargaan akademik di tingkat nasional, saya terus berinovasi dalam menciptakan solusi teknologi yang berdampak positif bagi masyarakat.</p>
+                
+                <div class="experience-list">
+                    <div class="experience-item">
+                        <div class="experience-icon">💼</div>
+                        <div class="experience-role">Bendahara (Treasurer)</div>
+                        <div class="experience-org">Programming Club</div>
+                        <div class="experience-period">Aug 2022 - Present</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-icon">👥</div>
+                        <div class="experience-role">Anggota (Member)</div>
+                        <div class="experience-org">HIMATIF (Teknik Informatika)</div>
+                        <div class="experience-period">Aug 2022 - Present</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-icon">🎓</div>
+                        <div class="experience-role">Asisten Laboratorium & Dosen</div>
+                        <div class="experience-org">Universitas Katolik Santo Thomas</div>
+                        <div class="experience-period">2022 - 2025</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-image-container">
+                <img src="/images/profile.jpg" alt="Boy Seventri Lumban Gaol" class="profile-image">
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Tech Stacks</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5+</div>
+                <div class="stat-label">Awards & Certs</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3+</div>
+                <div class="stat-label">Active Roles</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2025</div>
+                <div class="stat-label">Graduation</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <h2 class="section-title">Keahlian & Kompetensi</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-category">Frontend</div>
+                <div class="skill-items">
+                    <span class="skill-tag">React.js</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Web Development</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-category">Backend</div>
+                <div class="skill-items">
+                    <span class="skill-tag">Laravel</span>
+                    <span class="skill-tag">CodeIgniter</span>
+                    <span class="skill-tag">MySQL</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-category">Mobile</div>
+                <div class="skill-items">
+                    <span class="skill-tag">Flutter</span>
+                    <span class="skill-tag">Firebase</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-category">Soft Skills</div>
+                <div class="skill-items">
+                    <span class="skill-tag">Problem Solving</span>
+                    <span class="skill-tag">Teamwork</span>
+                    <span class="skill-tag">Leadership</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <h2 class="section-title">Penghargaan & Proyek</h2>
+        <div class="projects-container">
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <div class="project-title">EduAI Ecosystem</div>
+                        <div class="project-award">Pemenang PKM - Gagasan Futuristik Tertulis (GFT) Kemendibudristek</div>
+                    </div>
+                    <div class="project-date">Dec 2025</div>
+                </div>
+                <p class="project-description">
+                    Transformasi sistem pendidikan tinggi berbasis kecerdasan buatan untuk mahasiswa kreatif dan mandiri di era digital. Proyek ini dirancang untuk meningkatkan kualitas pendidikan melalui teknologi AI yang inovatif.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">AI</span>
+                    <span class="project-tag">Education</span>
+                    <span class="project-tag">Innovation</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <div class="project-title">Rujatrans</div>
+                        <div class="project-award">Pemenang PKM - Karya Inovatif Kemendikbudristek</div>
+                    </div>
+                    <div class="project-date">Dec 2023</div>
+                </div>
+                <p class="project-description">
+                    Aplikasi informasi rute perjalanan angkutan umum untuk mempermudah masyarakat Medan mencari informasi transportasi. Solusi praktis yang membantu pengguna menavigasi sistem transportasi publik dengan lebih efisien.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Mobile</span>
+                    <span class="project-tag">Laravel</span>
+                    <span class="project-tag">Public Service</span>
+                    <span class="project-tag">Innovation</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <div class="project-title">TrayekSmart</div>
+                        <div class="project-award">Aplikasi Rute Perjalanan Angkutan Umum</div>
+                    </div>
+                    <div class="project-date">Aug 2025</div>
+                </div>
+                <p class="project-description">
+                    Aplikasi mencari rute terpendek perjalanan angkutan umum menggunakan algoritma Dijkstra untuk mempermudah masyarakat Medan mencari informasi transportasi. Solusi praktis yang membantu pengguna menavigasi sistem transportasi publik dengan lebih efisien.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Mobile</span>
+                    <span class="project-tag">Firebase</span>
+                    <span class="project-tag">Public Service</span>
+                    <span class="project-tag">Innovation</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <div class="project-title">Aplikasi SOS</div>
+                        <div class="project-award">Aplikasi Darurat di Universitas Katolik Santo Thomas Medan</div>
+                    </div>
+                    <div class="project-date">Aug </div>
+                </div>
+                <p class="project-description">
+                   Aplikasi SOS untuk mahasiswa Universitas Katolik Santo Thomas Medan sebagai solusi darurat yang memudahkan mahasiswa dalam mengakses bantuan dengan cepat dan efisien. Aplikasi ini dirancang untuk meningkatkan keselamatan dan respons darurat di lingkungan kampus.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Mobile</span>
+                    <span class="project-tag">Firebase</span>
+                    <span class="project-tag">Public Service</span>
+                    <span class="project-tag">Innovation</span>
+                </div>
+            </div>
+                 <div class="project-card">
+                <div class="project-header">
+                    <div>
+                        <div class="project-title">Aplikasi Survey</div>
+                        <div class="project-award">Aplikasi Survei Kepuasan Mahasiswa Terhadap Dosen Pembimbing Akademik (PA) di Universitas Katolik Santo Thomas Medan</div>
+                    </div>
+                    <div class="project-date">Aug 2026 </div>
+                </div>
+                <p class="project-description">
+                     Aplikasi Survey Kepuasan Mahasiswa Terhadap Dosen Pembimbing Akademik (PA) di Universitas Katolik Santo Thomas Medan sebagai solusi untuk mengumpulkan umpan balik dari mahasiswa mengenai pengalaman mereka dengan dosen pembimbing akademik. Aplikasi ini dirancang untuk meningkatkan kualitas bimbingan akademik dan memberikan wawasan yang berharga bagi pengembangan program bimbingan di universitas.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Mobile</span>
+                    <span class="project-tag">Firebase</span>
+                    <span class="project-tag">Public Service</span>
+                    <span class="project-tag">Innovation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2 class="section-title">Mari Berkolaborasi</h2>
+        <p class="contact-description">
+            Saya terbuka untuk peluang baru, kolaborasi proyek, atau sekadar berbagi pengalaman. Hubungi saya melalui kontak berikut!
+        </p>
+
+        <div class="contact-buttons">
+            <a href="mailto:boylgaol73@gmail.com" class="contact-btn contact-btn-email">
+                ✉ boylgaol73@gmail.com
+            </a>
+            <a href="tel:+6282173396312" class="contact-btn contact-btn-phone">
+                📱 +62 821 7339 6312
+            </a>
+        </div>
+
+        <div class="divider">
+            <p class="social-label">Terhubung dengan saya di:</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/boyseventrilumbangaol" target="_blank" class="social-link" title="LinkedIn">💼</a>
+                <a href="https://github.com/boyslgaol" class="social-link" target="_blank" title="GitHub">🐙</a>
+                <a href="mailto:boylgaol73@gmail.com" class="social-link" title="Email">📧</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Boy Seventri Lumban Gaol. All rights reserved. Medan, North Sumatra.</p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.skill-card, .project-card, .stat-card, .experience-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Button interactions
+        document.querySelector('.btn-primary').addEventListener('click', () => {
+            document.querySelector('#skills').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.querySelector('.btn-secondary').addEventListener('click', () => {
+            document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Hover effects on cards
+        document.querySelectorAll('.skill-card, .project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
